@@ -9,7 +9,7 @@ import (
 )
 
 func main() {
-	conn, err := net.Dial("tcp4", "localhost:8080")
+	conn, err := net.Dial("tcp4", ":8080")
 	if err != nil {
 		fmt.Println("ошибка подключения к серверу:", err)
 		return
@@ -23,7 +23,6 @@ func main() {
 	go receiveMessages(conn, messages)
 	go outputMessages(messages)
 
-	// Чтение ввода пользователя
 	reader := bufio.NewReader(os.Stdin)
 	for {
 		fmt.Print("вы: ")
